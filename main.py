@@ -36,8 +36,8 @@ button_y = Button(15)
 
 # game class
 class OutOfTheLoopGame:
-    words = {"food":
-        # food words
+    WORDS = {"food":
+      # food words
         [# Mains
         "Pizza", "Sushi", "Lasagna", "Curry", "Kebab", "Pho", "Ramen", "Paella", "Spaghetti",
         "Fondue", "Falafel", "Grilled cheese",
@@ -52,8 +52,45 @@ class OutOfTheLoopGame:
 
         # Desserts
         "Cheesecake", "Brownie", "Sundae", "Tiramisu", "Donut", "Cupcake",
-        "Pudding", "Apple pie", "Macaron", "Cotton candy"]
+        "Pudding", "Apple pie", "Macaron", "Cotton candy"],
+
+      # household objects
+      "household": [
+          # Kitchen
+          "Plate", "Bowl", "Mug", "Fork", "Spoon", "Knife", "Frying pan",
+          "Saucepan", "Kettle", "Toaster", "Blender", "Whisk", "Spatula",
+          "Cutting board", "Colander", "Tupperware", "Rolling pin", "Oven mitt",
+          "Dish towel", "Grater", "Peeler", "Can opener", "Corkscrew", "Tongs",
+          "Mixing bowl",
+
+          # Living room
+          "Sofa", "Armchair", "Bookshelf", "Television",
+          "Remote control", "Lamp", "Rug", "Cushion",
+          "Picture frame", "Candle", "Clock", "Coaster",
+
+          # Bedroom
+          "Bed", "Pillow", "Duvet", "Mattress", "Nightstand", "Wardrobe",
+          "Dresser", "Mirror", "Alarm clock", "Hanger", "Hairbrush",
+
+          # Bathroom
+          "Toothbrush", "Toothpaste", "Towel", "Soap", "Shampoo", "Conditioner",
+          "Hair dryer", "Sink", "Bathtub", "Shower curtain",
+
+          # Cleaning
+          "Vacuum cleaner", "Broom", "Mop", "Dustpan", "Bucket", "Sponge",
+          "Trash can", "Iron", "Ironing board", "Spray bottle",
+
+          # Tools
+          "Hammer", "Screwdriver", "Nail", "Screw", "Tape measure", "Flashlight",
+          "Batteries", "Extension cord", "Ladder", "Toolbox", "Wrench",
+          "Duct tape", "Scissors", "Glue", "Stapler",
+
+          # Electronics
+          "Laptop", "Charger", "Headphones", "Speaker",
+          "Keyboard", "Mouse", "Printer",
+      ]
     }
+
     def __init__(self, players: int, theme: str):
         self.players = players
         self.theme = str
