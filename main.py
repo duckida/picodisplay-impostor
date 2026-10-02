@@ -1,3 +1,5 @@
+from re import L
+
 from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY
 from pimoroni import Button, RGBLED
 
@@ -31,6 +33,33 @@ button_x = Button(14)
 button_y = Button(15)
 
 # the code starts here...
+
+# game class
+class OutOfTheLoopGame:
+    words = {"food":
+        # food words
+        [# Mains
+        "Pizza", "Sushi", "Lasagna", "Curry", "Kebab", "Pho", "Ramen", "Paella", "Spaghetti",
+        "Fondue", "Falafel", "Grilled cheese",
+        "Quesadilla", "Calzone", "Shawarma", "Stir-fry",
+
+        # Breakfast
+        "Pancakes", "Oatmeal", "Cereal", "Bagel", "Omelette", "Croissant",
+
+        # Snacks
+        "Popcorn", "Pretzel", "Chips", "Nachos", "Trail mix", "Granola bar",
+        "Crackers", "Hummus", "Guacamole",
+
+        # Desserts
+        "Cheesecake", "Brownie", "Sundae", "Tiramisu", "Donut", "Cupcake",
+        "Pudding", "Apple pie", "Macaron", "Cotton candy"]
+    }
+    def __init__(self, players: int, theme: str):
+        self.players = players
+        self.theme = str
+
+
+
 
 clear(TEAL)
 
