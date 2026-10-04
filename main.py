@@ -1,7 +1,7 @@
-from re import L
+import random
 
-from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY
-from pimoroni import Button, RGBLED
+from picographics import DISPLAY_PICO_DISPLAY, PicoGraphics
+from pimoroni import RGBLED, Button
 
 # screen setup
 display = PicoGraphics(display=DISPLAY_PICO_DISPLAY, rotate=0)
@@ -31,6 +31,8 @@ button_a = Button(12)
 button_b = Button(13)
 button_x = Button(14)
 button_y = Button(15)
+# A X
+# B Y
 
 # the code starts here...
 
@@ -92,9 +94,10 @@ class OutOfTheLoopGame:
     }
 
     def __init__(self, players: int, theme: str):
-        self.players = players
+        self.players = players # players is >=3
         self.theme = str
-
+        self.word = random.choice(self.WORDS[theme])
+        self.impostor_number = random.randrange(1, players)
 
 
 
@@ -105,4 +108,44 @@ display.text("OUT OF THE LOOP", 10, 10, 200, 4)
 
 display.text("start", WIDTH-100, HEIGHT-35, 200, 3)
 
-display.update()
+display.update() 
+
+game_object = None
+
+# setup & state objects
+state = "welcome"
+players = 3
+
+while True:
+    # state based view display
+    if state == "players":
+        display.set_pen(WHITE)
+        display.text("HOW MANY PLAYERS?", 10, 10, 250, 3)
+        display.text("next", WIDTH-75, 15, 200, 3)
+
+        display.text("+", WIDTH-25, HEIGHT-40, 200, 5)
+        display.text("-", 15, HEIGHT-40, 200, 5)
+
+        display.text(str(players), 110, 70, 200, 7)
+
+        display.update()
+
+    # button reading
+    if button_y.read():
+        clear(TEAL)
+        if state == "welcome": # go from welcome to players
+            state = "players"
+
+        elif state == "players": # controlling number of players
+            players += 1
+
+    if button_b.read():
+        clear(TEAL)
+        if state == "players": # controlling number of players
+            if players > 3: players -= 1
+
+
+    if button_x.read():
+        clear(TEAL)
+        if state == "players": # on players screen, go next
+            state = "topic"
